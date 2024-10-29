@@ -3,7 +3,7 @@
 name: deploy-main
 
 on:
-  pull-request:
+  pull_request:
     branches:
       - main
 

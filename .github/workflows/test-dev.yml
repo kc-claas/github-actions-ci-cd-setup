@@ -1,0 +1,30 @@
+# github action for running tests when pull requesting into develop branch
+
+name: Cypress Testing
+
+on:
+  pull_request:
+    - develop
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checout@v1
+
+      - name: Use node.js 21.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 21.x
+
+      - name: install dependencies
+        run: npm install
+
+      - name: run build
+        run: npm run build
+
+      - name: run tests
+        run: npm test-component

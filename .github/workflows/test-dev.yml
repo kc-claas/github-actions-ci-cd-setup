@@ -4,7 +4,8 @@ name: Cypress Testing
 
 on:
   pull_request:
-    - develop
+    branches:
+      - develop
 
 
 jobs:
@@ -20,11 +21,10 @@ jobs:
         with:
           node-version: 21.x
 
-      - name: install dependencies
-        run: npm install
-
-      - name: run build
-        run: npm run build
+      - name: install and build
+        run:
+          - npm install
+          - npm run build
 
       - name: run tests
         run: npm test-component
